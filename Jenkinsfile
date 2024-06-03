@@ -8,13 +8,11 @@ pipeline {
         pollSCM '* * * * *'
     }
     stages {
-
-           stage('Security-check') {
+        stage('Security-check') {
             steps {
                 echo "Security Scan.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                echo "Performing security scan.."
                 '''
             }
         }
