@@ -8,11 +8,11 @@ pipeline {
         pollSCM '* * * * *'
     }
     stages {
-        stage('Security-check') {
+        stage('SAST Security-Check') {
             steps {
-                echo "Security Scan.."
+                echo "SAST Security Scan.."
                 sh '''
-                echo "Performing security scan.."
+                echo "Performing SAST security scan.."
                 '''
             }
         }
@@ -22,6 +22,15 @@ pipeline {
                 sh '''
                 cd myapp
                 pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('DAST Security-Check') {
+            steps {
+                echo "Security DAST Scan.."
+                sh '''
+                echo "Performing DAST security scan.."
                 '''
             }
         }
